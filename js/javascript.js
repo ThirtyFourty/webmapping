@@ -34,8 +34,6 @@ osm.addTo(map)
 fetch('geojson/tartu_city_districts_edu.geojson')
     .then(response => response.json())
     .then(json => {
-        console.log(json);
-
         L.geoJson(json.features, {
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(feature.properties['NIMI'])
@@ -43,10 +41,13 @@ fetch('geojson/tartu_city_districts_edu.geojson')
         }).addTo(map);
     });
 
+var markers = L.markerClusterGroup();
+
 fetch('geojson/tartu_city_celltowers_edu.geojson')
     .then(response => response.json())
     .then(json => {
-        console.log(json);
-
-        L.geoJson(json.features).addTo(map);
+        var cellTowers = L.geoJson(json);
+		markers.addLayer(cellTowers);
+		map.addLayer(markers);
+		map.fitBounds(markers.getBounds());
     });
