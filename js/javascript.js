@@ -35,12 +35,18 @@ fetch('geojson/tartu_city_districts_edu.geojson')
     .then(response => response.json())
     .then(json => {
         console.log(json);
-        // const polygons = L.geoJson(json)
-        // polygons.addTo(map)
 
         L.geoJson(json.features, {
-            onEachFeature: function(feature, layer) {
+            onEachFeature: function (feature, layer) {
                 layer.bindPopup(feature.properties['NIMI'])
             }
         }).addTo(map);
+    });
+
+fetch('geojson/tartu_city_celltowers_edu.geojson')
+    .then(response => response.json())
+    .then(json => {
+        console.log(json);
+
+        L.geoJson(json.features).addTo(map);
     });
