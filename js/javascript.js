@@ -18,3 +18,23 @@ polygons.addTo(map)
 
 addDistrictsGeoJson('geojson/tartu_city_districts_edu.geojson')
 addCelltowers('tartu_city_celltowers_edu.geojson')
+var markers = L.markerClusterGroup('tartu_city_celltowers_edu.geojson');
+markers.addLayer(L.marker(getRandomLatLng(map)));
+var markers = L.markerClusterGroup({
+	spiderfyShapePositions: function(count, centerPt) {
+                var distanceFromCenter = 35,
+                    markerDistance = 45,
+                    lineLength = markerDistance * (count - 1),
+                    lineStart = centerPt.y - lineLength / 2,
+                    res = [],
+                    i;
+
+                res.length = count;
+
+                for (i = count - 1; i >= 0; i--) {
+                    res[i] = new Point(centerPt.x + distanceFromCenter, lineStart + markerDistance * i);
+                }
+
+                return res;
+            }
+});
