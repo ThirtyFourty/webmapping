@@ -42,5 +42,6 @@ fetch('geojson/tartu_city_districts_edu.geojson')
     .then(response => response.json())
     .then(json => {
         console.log(json);
+        const polygons = L.geoJson(data)
         polygons.addTo(map)
     });
