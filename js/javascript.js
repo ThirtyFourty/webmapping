@@ -51,3 +51,7 @@ fetch('geojson/tartu_city_celltowers_edu.geojson')
 		map.addLayer(markers);
 		map.fitBounds(markers.getBounds());
     });
+
+function setDefaultView() {
+    map.setView([58.373523, 26.716045], 12);
+}
