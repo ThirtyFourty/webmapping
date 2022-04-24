@@ -18,5 +18,31 @@
       <div id="map" class="map-container"></div>
       <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
       <script src="js/javascript.js"></script>
+	   }
+
+
+		var polygon;
+		markers.on('clustermouseover', function (a) {
+			if (polygon) {
+				map.removeLayer(polygon);
+			}
+			polygon = L.polygon(a.layer.getConvexHull());
+			map.addLayer(polygon);
+		});
+
+		markers.on('clustermouseout', function (a) {
+			if (polygon) {
+				map.removeLayer(polygon);
+				polygon = null;
+			}
+		});
+
+		map.on('zoomend', function () {
+			if (polygon) {
+				map.removeLayer(polygon);
+				polygon = null;
+			}
+		});
+
    </body>
 </html>
