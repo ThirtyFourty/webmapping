@@ -8,40 +8,39 @@ const osm =
 
 osm.addTo(map)
 
-async function addDistrictsGeoJson(url) {
-    // const response = await fetch(url)
-    // const data = await response.json()
-    // const polygons = L.geoJson(data)
-    // console.log(polygons)
-    // polygons.addTo(map)
-    fetch(url)
-        .then(response => response.json())
-        .then(json => {
-            console.log(json);
-            const polygons = L.geoJson(data)
-            polygons.addTo(map)
-        });
-}
+// async function addDistrictsGeoJson(url) {
+//     const response = await fetch(url)
+//     const data = await response.json()
+//     const polygons = L.geoJson(data)
+//     console.log(polygons)
+//     polygons.addTo(map)
+// }
 
 // addDistrictsGeoJson('./geojson/tartu_city_districts_edu.geojson')
 
 // osm.addTo(map)
 
-async function addCelltower(url) {
-    const response = await fetch(url)
-    const data = await response.json()
-    const polygons = L.geoJson(data)
-    polygons.addTo(map)
+// async function addCelltower(url) {
+//     const response = await fetch(url)
+//     const data = await response.json()
+//     const polygons = L.geoJson(data)
+//     polygons.addTo(map)
 
-    addCelltowers('tartu_city_celltowers_edu.geojson')
-    var markers = L.markerClusterGroup('tartu_city_celltowers_edu.geojson');
-    markers.addLayer(L.marker(getRandomLatLng(map)));
-}
+//     addCelltowers('tartu_city_celltowers_edu.geojson')
+//     var markers = L.markerClusterGroup('tartu_city_celltowers_edu.geojson');
+//     markers.addLayer(L.marker(getRandomLatLng(map)));
+// }
 
 fetch('geojson/tartu_city_districts_edu.geojson')
     .then(response => response.json())
     .then(json => {
         console.log(json);
-        const polygons = L.geoJson(json)
-        polygons.addTo(map)
+        // const polygons = L.geoJson(json)
+        // polygons.addTo(map)
+
+        L.geoJson(json.features, {
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup(feature.properties['NIMI'])
+            }
+        }).addTo(map);
     });
