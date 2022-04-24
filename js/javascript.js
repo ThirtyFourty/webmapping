@@ -18,6 +18,7 @@ async function addDistrictsGeoJson(url) {
         .then(response => response.json())
         .then(json => {
             console.log(json);
+            const polygons = L.geoJson(data)
             polygons.addTo(map)
         });
 }
