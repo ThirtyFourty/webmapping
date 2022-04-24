@@ -20,29 +20,5 @@
       <script src="js/javascript.js"></script>
 	   }
 
-
-		var polygon;
-		markers.on('clustermouseover', function (a) {
-			if (polygon) {
-				map.removeLayer(polygon);
-			}
-			polygon = L.polygon(a.layer.getConvexHull());
-			map.addLayer(polygon);
-		});
-
-		markers.on('clustermouseout', function (a) {
-			if (polygon) {
-				map.removeLayer(polygon);
-				polygon = null;
-			}
-		});
-
-		map.on('zoomend', function () {
-			if (polygon) {
-				map.removeLayer(polygon);
-				polygon = null;
-			}
-		});
-
    </body>
 </html>
