@@ -17,3 +17,4 @@ polygons.addTo(map)
 }
 
 addDistrictsGeoJson('geojson/tartu_city_districts_edu.geojson')
+addCelltowers('tartu_city_celltowers_edu.geojson')
