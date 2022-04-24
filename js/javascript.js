@@ -8,7 +8,6 @@ attribution: 'OpenStreetMap contributors',
 
 osm.addTo(map)
 
-// add geoJSON polygons layer*
 async function addDistrictsGeoJson(url) {
 const response = await fetch(url)
 const data = await response.json()
@@ -17,6 +16,15 @@ polygons.addTo(map)
 }
 
 addDistrictsGeoJson('geojson/tartu_city_districts_edu.geojson')
+
+osm.addTo(map)
+
+async function addCelltower(url) {
+const response = await fetch(url)
+const data = await response.json()
+const polygons = L.geoJson(data)
+polygons.addTo(map)
+
 addCelltowers('tartu_city_celltowers_edu.geojson')
 var markers = L.markerClusterGroup('tartu_city_celltowers_edu.geojson');
 markers.addLayer(L.marker(getRandomLatLng(map)));
