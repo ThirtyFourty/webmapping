@@ -30,11 +30,11 @@ body {
 .default-btn {
 	margin-bottom: 1rem;
 }
-.footer-top {
+.footer {
   font-size: 11px;
-  margin-top: 1rem;
+  margin: 8px;
   color: #080808;
-  text-align: center;
+  text-align: left;
 }
 nav a {
   font-size: 14px;
