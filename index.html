@@ -6,6 +6,11 @@
       <title>Web Gis</title>
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" 
          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+       <nav>
+      <a href="index.html" class="active">Basic Map</a>
+      <a href="choroplethmap.html">Choropleth Map</a>
+      <a href="heatmap.html">Heatmap</a>
+      </nav>
       <link rel="stylesheet" href="css/styles.css" />
       <link rel="stylesheet" href="leaflet_markercluster/MarkerCluster.css" />
       <link rel="stylesheet" href="leaflet_markercluster/MarkerCluster.Default.css" />
@@ -14,11 +19,6 @@
    </head>
    <body>
       <h2>Web GIS Application</h2>
-    <nav>
-      <a href="index.html" class="active">Basic Map</a>
-      <a href="choroplethmap.html">Choropleth Map</a>
-      <a href="heatmap.html">Heatmap</a>
-    </nav>
       <button onclick="setDefaultView();">Set Default View</button>
       <div id="map" class="map-container"></div>
       <footer>© Volha Kaskevich, University of Tartu, 2022</footer>
