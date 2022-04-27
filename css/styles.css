@@ -33,10 +33,11 @@ body {
 .footer-top {
   font-size: 11px;
   margin-top: 1rem;
-  color: #fff;
+  color: #080808;
+  text-align: center;
 }
 nav a {
   font-size: 14px;
   margin-right: 5px;
-  color: #black;
+  color: #080808;;
 }
